@@ -179,9 +179,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 1110231147
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1846802916, guid: ea556ed130cfad246a0cc2076a834d92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -354,7 +354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1203325223}
   - component: {fileID: 1203325222}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,8 +399,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1958571177
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4c4c5757386253445b0470674362f2a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
