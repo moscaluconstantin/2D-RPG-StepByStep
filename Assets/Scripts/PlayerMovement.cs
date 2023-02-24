@@ -20,6 +20,9 @@ namespace Assets.Scripts
 
         private void FixedUpdate()
         {
+            if (_input.sqrMagnitude < .1f)
+                return;
+
             var nextPosition = (Vector2)transform.position + _input * (_movementSpeed * Time.deltaTime);
             _rigidbody.MovePosition(nextPosition);
         }
