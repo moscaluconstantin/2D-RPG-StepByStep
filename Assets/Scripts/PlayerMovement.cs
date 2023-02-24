@@ -6,24 +6,22 @@ namespace Assets.Scripts
     public class PlayerMovement : MonoBehaviour
     {
         [Header("Settings")]
-        [SerializeField, Range(0, 100)] private float _movementSpeed = 2;
+        [SerializeField, Range(1, 10)] private float _movementSpeed = 4;
 
         [Header("Components")]
         [SerializeField] private Rigidbody2D _rigidbody;
 
-        private Vector2 _newPosition;
-
-
+        private Vector2 _input;
 
         private void Update()
         {
-            var input = new Vector2(Input.GetAxisRaw(InputConstants.AXIS_HORIZONTAL), Input.GetAxisRaw(InputConstants.AXIS_VERTICAL));
-            _newPosition = (Vector2)transform.position + input * (_movementSpeed * Time.deltaTime);
+            _input = new Vector2(Input.GetAxisRaw(InputConstants.AXIS_HORIZONTAL), Input.GetAxisRaw(InputConstants.AXIS_VERTICAL));
         }
 
         private void FixedUpdate()
         {
-            _rigidbody.MovePosition(_newPosition);
+            var nextPosition = (Vector2)transform.position + _input * (_movementSpeed * Time.deltaTime);
+            _rigidbody.MovePosition(nextPosition);
         }
     }
 }
