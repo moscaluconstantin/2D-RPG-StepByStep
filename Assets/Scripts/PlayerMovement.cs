@@ -10,12 +10,14 @@ namespace Assets.Scripts
 
         [Header("Components")]
         [SerializeField] private Rigidbody2D _rigidbody;
+        [SerializeField] private CharacterAnimator _animator;
 
         private Vector2 _input;
 
         private void Update()
         {
             _input = new Vector2(Input.GetAxisRaw(InputConstants.AXIS_HORIZONTAL), Input.GetAxisRaw(InputConstants.AXIS_VERTICAL));
+            _animator.SetCurrentInput(_input);
         }
 
         private void FixedUpdate()
@@ -23,7 +25,7 @@ namespace Assets.Scripts
             if (_input.sqrMagnitude < .1f)
                 return;
 
-            var nextPosition = (Vector2)transform.position + _input * (_movementSpeed * Time.deltaTime);
+            var nextPosition = (Vector2)transform.position + _input * (_movementSpeed * Time.fixedDeltaTime);
             _rigidbody.MovePosition(nextPosition);
         }
     }
