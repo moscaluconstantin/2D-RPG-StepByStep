@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Windows;
 
 namespace Assets.Scripts
 {
@@ -7,7 +6,6 @@ namespace Assets.Scripts
     {
         [Header("Settings")]
         [SerializeField] private float _attackDuration = 1;
-        [SerializeField] private bool _useFirstApproach = false;
 
         [Header("Components")]
         [SerializeField] private Animator _animator;
@@ -26,53 +24,23 @@ namespace Assets.Scripts
 
         public void SetCurrentInput(Vector2 input)
         {
-            if (_useFirstApproach)
+            /*bool isMoving = input.magnitude > 0.1f;
+
+            _animator.SetBool("isMoving", isMoving);
+
+            _animator.SetFloat("xVelocity", input.x);
+            _animator.SetFloat("yVelocity", input.y);
+
+            if (isMoving)
             {
-                FirstApproach(input);
-            }
-            else
-            {
-                SecondApproach(input);
-            }
+                _animator.SetFloat("xIdle", input.x);
+                _animator.SetFloat("yIdle", input.y);
+            }*/
 
-            /*float vs int demonstration
-            int intVal = 0; // = some value
-            float floatVal = 0;
-
-            for (int i = 0; i < 100; i++)
-            {
-                intVal += 1;
-                floatVal += 0.1f;
-            }
-
-            floatVal == 10.00000001*/
-        }
-
-        public void SetAttack() =>
-            _animator.SetTrigger(_attackHash);
-
-        private void FirstApproach(Vector2 input)
-        {
             bool isMoving = input.magnitude > 0.1f;
 
-            _animator.SetBool(_isMovingHash, isMoving);
-
-            if (!isMoving)
-                return;
-
-            _animator.SetFloat(_xVelocityHash, input.x);
-            _animator.SetFloat(_yVelocityHash, input.y);
-
-            _animator.SetFloat(_xIdleHash, input.x);
-            _animator.SetFloat(_yIdleHash, input.y);
-        }
-
-        private void SecondApproach(Vector2 input)
-        {
-            //bool isMoving = input.x > 0.1f || input.x < -0.1f || input.y > 0 || input.y < 0;
-            bool isMoving = input.magnitude > 0.1f;
-
-            /*if(_wasMoving == true && isMoving == false)
+            /*//bool isMoving = input.x > 0.1f || input.x < -0.1f || input.y > 0 || input.y < 0;
+            if(_wasMoving == true && isMoving == false)
             if(_wasMoving == true && isMoving != true)*/
             if (_wasMoving && !isMoving)
             {
@@ -82,14 +50,25 @@ namespace Assets.Scripts
 
             _animator.SetBool(_isMovingHash, isMoving);
 
-            if (isMoving)
-            {
-                _animator.SetFloat(_xVelocityHash, input.x);
-                _animator.SetFloat(_yVelocityHash, input.y);
-            }
+            _animator.SetFloat(_xVelocityHash, input.x);
+            _animator.SetFloat(_yVelocityHash, input.y);
 
             _lastInput = input;
             _wasMoving = isMoving;
+
+            /*//int intVal = 0; // = some value
+            //float floatVal = 0;
+
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    intVal += 1;
+            //    floatVal += 0.1f;
+            //}
+
+            //floatVal == 10.00000001*/
         }
+
+        public void SetAttack() =>
+            _animator.SetTrigger(_attackHash);
     }
 }
