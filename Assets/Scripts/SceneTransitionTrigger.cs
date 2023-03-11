@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -13,6 +12,7 @@ namespace Assets.Scripts
 
         [Header("Components")]
         [SerializeField] private BoxCollider2D _collider;
+        [SerializeField] private SceneLoader _sceneLoader;
 
         private void OnValidate()
         {
@@ -21,7 +21,7 @@ namespace Assets.Scripts
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            SceneManager.LoadScene(_sceneName, LoadSceneMode.Single);
+            _sceneLoader.LoadScene(_sceneName);
         }
 
         private void OnDrawGizmos()
