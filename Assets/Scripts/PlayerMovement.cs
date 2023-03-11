@@ -29,7 +29,7 @@ namespace Assets.Scripts
             if (!_canMove || _input.sqrMagnitude < .1f)
                 return;
 
-            var nextPosition = (Vector2)transform.position + _input * (_movementSpeed * Time.fixedDeltaTime);
+            var nextPosition = (Vector2)transform.position + _input.normalized * (_movementSpeed * Time.fixedDeltaTime);
             _rigidbody.MovePosition(nextPosition);
         }
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Assets.Scripts.UI
 {
@@ -9,42 +10,43 @@ namespace Assets.Scripts.UI
 
         [Header("Components")]
         [SerializeField] private CanvasGroup _fade;
+        [SerializeField] private CoroutineRunner _coroutineRunner;
 
         public bool IsFading => _isFading;
 
         private bool _isFading = false;
-        private float _startAlpha;
-        private float _targetAlpha;
-        private float _tempT;
 
-        private void Update()
+        public Coroutine FadeIn()
         {
-            if (!_isFading)
-                return;
+            if (_isFading)
+                return null;
 
-            _tempT += Time.deltaTime;
-
-            float t = _tempT / _transitionTime;
-            _fade.alpha = Mathf.Lerp(_startAlpha, _targetAlpha, t);
-
-            if (_tempT > _transitionTime)
-                _isFading = false;
+            return _coroutineRunner.StartCustomeCoroutine(Fade(0, 1));
         }
 
-        public void FadeIn()
+        public Coroutine FadeOut()
         {
-            _startAlpha = 0;
-            _targetAlpha = 1;
-            _tempT = 0;
-            _isFading = true;
+            if (_isFading)
+                return null;
+
+            return _coroutineRunner.StartCustomeCoroutine(Fade(1, 0));
         }
 
-        public void FadeOut()
+        private IEnumerator Fade(float from, float to)
         {
-            _startAlpha = 1;
-            _targetAlpha = 0;
-            _tempT = 0;
             _isFading = true;
+            float passedTime = 0;
+
+            while (passedTime <= _transitionTime)
+            {
+                passedTime += Time.deltaTime;
+                float t = passedTime / _transitionTime;
+                _fade.alpha = Mathf.Lerp(from, to, t);
+
+                yield return null;
+            }
+
+            _isFading = false;
         }
     }
 }
