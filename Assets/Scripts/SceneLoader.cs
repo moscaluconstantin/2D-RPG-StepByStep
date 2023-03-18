@@ -36,7 +36,7 @@ namespace Assets.Scripts
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
             _activSceneName = sceneName;
 
-            _screenFade.FadeOut();
+            yield return _screenFade.FadeOut();
 
             _isLoading = false;
         }
