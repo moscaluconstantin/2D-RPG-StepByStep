@@ -509,8 +509,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4855362670425886314}
+  - component: {fileID: 9063195622764718082}
   m_Layer: 0
-  m_Name: Scene Transition Managers
+  m_Name: Game Bootstraper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -535,3 +536,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9063195622764718082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8249774367445186764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c8371381bac9a4d85ca3eee37670f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coroutineRunner: {fileID: 7808409122597459348}
+  _screenFade: {fileID: 7885330686414799904}
+  _sceneLoader: {fileID: 7885330687389635024}

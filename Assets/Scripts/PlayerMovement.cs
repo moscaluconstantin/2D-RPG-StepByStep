@@ -12,6 +12,8 @@ namespace Assets.Scripts
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private CharacterAnimator _animator;
 
+        public static string Transition_key = "";
+
         private Vector2 _input;
         private bool _canMove = true;
 

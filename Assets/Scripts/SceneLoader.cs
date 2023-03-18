@@ -12,11 +12,7 @@ namespace Assets.Scripts
 
         private bool _isLoading = false;
         private Coroutine _loading;
-
-        private void Start()
-        {
-            _screenFade.FadeOut();
-        }
+        private string _activSceneName = "";
 
         public void LoadScene(string sceneName)
         {
@@ -26,19 +22,21 @@ namespace Assets.Scripts
             _loading = _coroutineRunner.StartCustomeCoroutine(Loading(sceneName));
         }
 
-        public void StopoLading()
-        {
-            _coroutineRunner.StopCustomCoroutin(_loading);
-            //_screenFade.MakeTransparent();
-            _isLoading = false;
-        }
-
         private IEnumerator Loading(string sceneName)
         {
             _isLoading = true;
 
             yield return _screenFade.FadeIn();
-            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+
+            if (!string.IsNullOrEmpty(_activSceneName))
+                yield return SceneManager.UnloadSceneAsync(_activSceneName);
+
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            _activSceneName = sceneName;
+
+            _screenFade.FadeOut();
 
             _isLoading = false;
         }

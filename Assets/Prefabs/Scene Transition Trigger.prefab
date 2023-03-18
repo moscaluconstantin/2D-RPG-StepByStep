@@ -78,11 +78,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ac11bc81535f641a0bf347e7fb4568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneName: TestScene
+  _transition_key: transition-1
   _gizmosColor: {r: 0, g: 0.15852594, b: 1, a: 1}
   _xSize: 0.93
   _ySize: 1.91
-  _sceneName: TestScene
   _collider: {fileID: 8364950317557272658}
+  _playerLoader: {fileID: 0}
+  _placement: {fileID: 5733387975294579093}
 --- !u!61 &8364950317557272658
 BoxCollider2D:
   m_ObjectHideFlags: 0

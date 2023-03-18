@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Constants;
 using UnityEngine;
-using UnityEngine.WSA;
 
 namespace Assets.Scripts
 {
