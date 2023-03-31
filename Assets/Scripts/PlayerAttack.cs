@@ -18,18 +18,19 @@ namespace Assets.Scripts
             if (!_isAttacking && Input.GetButtonDown(InputConstants.FIRE_1))
             {
                 _isAttacking = true;
-                _movement.StopMovement();
                 _animator.SetAttack();
                 _waitTime = _animator.AttackDuration;
                 return;
             }
 
+            if (!_isAttacking)
+                return;
+
             _waitTime -= Time.deltaTime;
 
-            if(_waitTime <= 0)
+            if (_waitTime <= 0)
             {
                 _isAttacking = false;
-                _movement.StartMovement();
             }
         }
     }

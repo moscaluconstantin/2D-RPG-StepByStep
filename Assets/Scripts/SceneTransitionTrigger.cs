@@ -16,10 +16,11 @@ namespace Assets.Scripts
 
         [Header("Components")]
         [SerializeField] private BoxCollider2D _collider;
-        [SerializeField] private PlayerLoader _playerLoader;
+        [SerializeField] private SceneInitializer _playerLoader;
         [SerializeField] private Transform _placement;
 
         private SceneLoader _sceneLoader;
+        private PlayerMovement _player;
 
         private void OnValidate()
         {
@@ -33,18 +34,21 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            var player = _playerLoader.Player;
+            _player = _playerLoader.Player;
 
-            if (player == null || PlayerMovement.Transition_key != _transition_key)
+            if (_player == null || PlayerMovement.Transition_key != _transition_key)
                 return;
 
-            player.transform.position = _placement.position;
+            _player.transform.position = _placement.position;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             PlayerMovement.Transition_key = _transition_key;
-            _sceneLoader.LoadScene(_sceneName);
+            {
+                _sceneLoader.LoadScene(_sceneName);
+            }
+
         }
 
         private void OnDrawGizmos()

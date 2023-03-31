@@ -548,6 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c8371381bac9a4d85ca3eee37670f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startScene: Countryside
   _coroutineRunner: {fileID: 7808409122597459348}
   _screenFade: {fileID: 7885330686414799904}
   _sceneLoader: {fileID: 7885330687389635024}
