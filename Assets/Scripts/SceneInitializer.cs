@@ -25,6 +25,8 @@ namespace Assets.Scripts
         private void Start()
         {
             Player.Initialize(_xBounds, _yBounds);
+
+            _cameraController.Initialize(_xBounds, _yBounds);
             _cameraController.Follow(Player.transform);
         }
 
