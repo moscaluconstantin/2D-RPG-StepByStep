@@ -20,6 +20,7 @@ namespace Assets.Scripts
         [SerializeField] private Transform _placement;
 
         private SceneLoader _sceneLoader;
+        private SaveLoad _saveLoad;
         private PlayerMovement _player;
 
         private void OnValidate()
@@ -30,13 +31,14 @@ namespace Assets.Scripts
         private void Awake()
         {
             _sceneLoader = ServiceContainer.SceneLoader;
+            _saveLoad = ServiceContainer.SaveLoad;
         }
 
         private void Start()
         {
             _player = _playerLoader.Player;
 
-            if (_player == null || PlayerMovement.Transition_key != _transition_key)
+            if (_player == null || _saveLoad.PlayerData.TransitionKey != _transition_key)
                 return;
 
             _player.transform.position = _placement.position;
@@ -44,10 +46,10 @@ namespace Assets.Scripts
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            PlayerMovement.Transition_key = _transition_key;
-            {
-                _sceneLoader.LoadScene(_sceneName);
-            }
+            _saveLoad.PlayerData.SceneName = _sceneName;
+            _saveLoad.PlayerData.TransitionKey = _transition_key;
+
+            _sceneLoader.LoadScene(_sceneName);
 
         }
 
@@ -55,6 +57,8 @@ namespace Assets.Scripts
         {
             Gizmos.color = _gizmosColor;
             Gizmos.DrawCube(transform.position, new Vector3(_collider.size.x, _collider.size.y, 0.1f));
+
+            //Gizmos.DrawSphere(_placement.position, .3f);
         }
     }
 }
