@@ -26,15 +26,7 @@ namespace Assets.Scripts.Infrastructure
             ServiceContainer.ScreenFade = _screenFade;
             ServiceContainer.SceneLoader = _sceneLoader;
 
-            if (string.IsNullOrEmpty(_saveLoad.PlayerData.SceneName))
-            {
-                _sceneLoader.LoadScene(_startScene);
-            }
-            else
-            {
-                _sceneLoader.LoadScene(_saveLoad.PlayerData.SceneName);
-            }
-
+            _sceneLoader.LoadScene(_saveLoad.PlayerData.SceneName);
         }
     }
 }

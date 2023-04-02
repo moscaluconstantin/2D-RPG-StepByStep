@@ -46,6 +46,9 @@ namespace Assets.Scripts
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (!collision.gameObject.TryGetComponent<PlayerMovement>(out var _))
+                return;
+
             _saveLoad.PlayerData.SceneName = _sceneName;
             _saveLoad.PlayerData.TransitionKey = _transition_key;
 

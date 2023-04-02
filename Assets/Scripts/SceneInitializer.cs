@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Infrastructure;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Assets.Scripts
@@ -28,6 +29,15 @@ namespace Assets.Scripts
 
             _cameraController.Initialize(_xBounds, _yBounds);
             _cameraController.Follow(Player.transform);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.K))
+                ServiceContainer.SaveLoad.Save();
+
+            if (Input.GetKeyDown(KeyCode.L))
+                ServiceContainer.SaveLoad.Clear();
         }
 
         private PlayerMovement CreatePlayer()
