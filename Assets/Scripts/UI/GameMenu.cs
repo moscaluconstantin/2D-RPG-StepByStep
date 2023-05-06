@@ -1,36 +1,58 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using Assets.Scripts.Data;
+using Assets.Scripts.Data.Enums;
+using UnityEngine;
 
 namespace Assets.Scripts.UI
 {
     public class GameMenu : MonoBehaviour
     {
-        [SerializeField] private Button[] _buttons;
+        [SerializeField] private GameMenuPanelType _initialPanelType;
 
-        private void Awake()
+        [Header("Components")]
+        [SerializeField] private GameMenuButtonTypeValues[] _panelButtons;
+        [SerializeField] private GameMenuPanelTypeValues[] _panels;
+
+
+        private void Start()
         {
-            _buttons[0].onClick.RemoveAllListeners();
-            _buttons[0].onClick.AddListener(Click4);
+            //for (int i = 0; i < _panelButtons.Length; i++)
+            //    _panelButtons[i].Button.onClick.AddListener(() => OpenPanel(_panelButtons[i].Type));
+
+            OpenPanel(_initialPanelType);
         }
 
-        public void Click1()
+        public void OpenStats()
         {
-            print("Click 1");
-        }
-        
-        public void Click2()
-        {
-            print("Click 2");
+            OpenPanel(GameMenuPanelType.Stats);
         }
 
-        public void Click3()
+        public void OpenInventory()
         {
-            print("Click 3");
+            OpenPanel(GameMenuPanelType.Inventory);
         }
 
-        private void Click4()
+        public void Save()
         {
-            print("Click private");
+            print("Save");
+        }
+
+        public void Close()
+        {
+            print("Close");
+        }
+
+        public void Quit()
+        {
+            Application.Quit();
+        }
+
+        private void OpenPanel(GameMenuPanelType panelType)
+        {
+            for (int i = 0; i < _panelButtons.Length; i++)
+                _panelButtons[i].Button.interactable = _panelButtons[i].Type != panelType;
+
+            for (int i = 0; i < _panels.Length; i++)
+                _panels[i].Element.SetActive(_panels[i].Type == panelType);
         }
     }
 }
