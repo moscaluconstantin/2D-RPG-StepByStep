@@ -14,12 +14,16 @@ namespace Assets.Scripts
         private Coroutine _loading;
         private string _activSceneName = "";
 
-        public void LoadScene(string sceneName)
+        public Coroutine LoadSceneWithoutTracking(string sceneName) =>
+            _coroutineRunner.StartCustomeCoroutine(LoadingWithoutTracking(sceneName));
+
+        public Coroutine LoadScene(string sceneName)
         {
             if (_isLoading)
-                return;
+                return _loading;
 
             _loading = _coroutineRunner.StartCustomeCoroutine(Loading(sceneName));
+            return _loading;
         }
 
         private IEnumerator Loading(string sceneName)
@@ -39,6 +43,11 @@ namespace Assets.Scripts
             yield return _screenFade.FadeOut();
 
             _isLoading = false;
+        }
+
+        private IEnumerator LoadingWithoutTracking(string sceneName)
+        {
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         }
     }
 }

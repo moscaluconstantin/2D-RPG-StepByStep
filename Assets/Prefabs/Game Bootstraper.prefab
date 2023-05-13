@@ -549,10 +549,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c8371381bac9a4d85ca3eee37670f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startScene: Countryside
+  _uiScene: UI
   _coroutineRunner: {fileID: 7808409122597459348}
   _screenFade: {fileID: 7885330686414799904}
   _sceneLoader: {fileID: 7885330687389635024}
+  _playerInventory: {fileID: 0}
 --- !u!1 &8368653627445743895
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,5 +599,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _items:
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
   - Item: {fileID: 11400000, guid: e06e3712acd27e742a052a5184c0eab7, type: 2}
-    Count: 3
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 11400000, guid: 81be63b6a4b6b654cbda0424e0271962, type: 2}
+    Count: 25
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 11400000, guid: 7c9f311394a1843409171dcf156a0edd, type: 2}
+    Count: 4
+  - Item: {fileID: 11400000, guid: 7c9f311394a1843409171dcf156a0edd, type: 2}
+    Count: 6
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 11400000, guid: e06e3712acd27e742a052a5184c0eab7, type: 2}
+    Count: 2
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0
+  - Item: {fileID: 0}
+    Count: 0

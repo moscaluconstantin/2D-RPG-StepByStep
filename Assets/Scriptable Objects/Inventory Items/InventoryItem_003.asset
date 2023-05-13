@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 3
   _name: Coin
-  _icon: {fileID: 0}
+  _icon: {fileID: -98590762, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}

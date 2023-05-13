@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.UI;
+﻿using Assets.Scripts.Player;
+using Assets.Scripts.UI;
 
 namespace Assets.Scripts.Infrastructure
 {
@@ -8,5 +9,6 @@ namespace Assets.Scripts.Infrastructure
         public static SceneLoader SceneLoader;
         public static CoroutineRunner CoroutineRunner;
         public static ScreenFade ScreenFade;
+        public static PlayerInventory PlayerInventory;
     }
 }

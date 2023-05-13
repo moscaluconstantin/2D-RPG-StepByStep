@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/boot.unity
     guid: 2a596d303ecda6b468c81119ccab0a1a
   - enabled: 1
+    path: Assets/Scenes/UI.unity
+    guid: 061ff8372c721eb468cedbe71786621a
+  - enabled: 1
     path: Assets/Scenes/Countryside.unity
     guid: 8085b2bc1f04bdd44b500cb2cbe1187c
   - enabled: 1
