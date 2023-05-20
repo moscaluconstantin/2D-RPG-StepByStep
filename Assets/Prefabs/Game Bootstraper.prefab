@@ -553,7 +553,7 @@ MonoBehaviour:
   _coroutineRunner: {fileID: 7808409122597459348}
   _screenFade: {fileID: 7885330686414799904}
   _sceneLoader: {fileID: 7885330687389635024}
-  _playerInventory: {fileID: 0}
+  _playerInventory: {fileID: 1093274259}
 --- !u!1 &8368653627445743895
 GameObject:
   m_ObjectHideFlags: 0

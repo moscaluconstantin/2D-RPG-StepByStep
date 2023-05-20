@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.ScriptableObjects;
+﻿using Assets.Scripts.Infrastructure;
+using Assets.Scripts.Player;
+using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 
 namespace Assets.Scripts.UI
@@ -9,18 +11,26 @@ namespace Assets.Scripts.UI
         [SerializeField] private Transform _slotsContainer;
 
         private UIInventorySlot[] _slots;
+        private PlayerInventory _inventory;
 
         private void Awake()
         {
             _slots = _slotsContainer.GetComponentsInChildren<UIInventorySlot>();
+            _inventory = ServiceContainer.PlayerInventory;
         }
 
-        private void Start()
+        private void OnEnable()
         {
-            foreach (var slot in _slots)
+            InventoryItem[] items = _inventory.GetItems();
+
+            for (int i = 0; i < items.Length; i++)
             {
-                slot.SetItem(_testItem);
+                var item = items[i];
+                int count = _inventory.Count(items[i]);
+
+                _slots[i].SetItem(item, count);
             }
+
         }
     }
 }

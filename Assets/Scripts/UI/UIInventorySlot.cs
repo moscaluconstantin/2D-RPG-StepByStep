@@ -20,23 +20,33 @@ namespace Assets.Scripts.UI
             _button.onClick.AddListener(OnClicked);
         }
 
-        public void SetItem(InventoryItem item)
+        public void SetItem(InventoryItem item, int counter = 0)
         {
+            if (item == null)
+            {
+                Deactivate();
+                return;
+            }
+
             _item = item;
 
-            RefreshSlot();
+            SetIcon();
+            SetCounter(counter);
             Activate();
         }
 
-        public void Activate() => 
+        public void SetCounter(int count) =>
+            _counter.SetText($"{count}");
+
+        public void Activate() =>
             SetState(true);
 
-        public void Deactivate() => 
+        public void Deactivate() =>
             SetState(false);
 
         private void OnClicked()
         {
-            Deactivate();
+            //Deactivate();
         }
 
         private void SetState(bool newState)
@@ -45,10 +55,7 @@ namespace Assets.Scripts.UI
             _button.enabled = newState;
         }
 
-        private void RefreshSlot()
-        {
+        private void SetIcon() =>
             _icon.sprite = _item.Icon;
-            _counter.SetText("0");
-        }
     }
 }

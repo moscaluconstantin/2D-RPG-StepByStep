@@ -12,14 +12,11 @@ namespace Assets.Scripts.UI
         [SerializeField] private GameMenuButtonTypeValues[] _panelButtons;
         [SerializeField] private GameMenuPanelTypeValues[] _panels;
 
-
-        private void Start()
+        private void OnEnable()
         {
-            //for (int i = 0; i < _panelButtons.Length; i++)
-            //    _panelButtons[i].Button.onClick.AddListener(() => OpenPanel(_panelButtons[i].Type));
-
             OpenPanel(_initialPanelType);
         }
+
 
         public void OpenStats()
         {
